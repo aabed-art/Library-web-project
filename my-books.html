@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Borrowed Books | The Reading Room</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="home.html" aria-label="The Reading Room home">
+        <span class="brand-mark">R</span>
+        <span class="brand-name">The Reading<br><strong>Room</strong></span>
+      </a>
+
+      <div class="side-label">LIBRARY</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="home.html"><span class="nav-icon">⌂</span> Home</a>
+        <a href="catalogue.html"><span class="nav-icon">▤</span> Browse Books</a>
+        <a class="active" href="my-books.html"><span class="nav-icon">▣</span> My Borrowed Books <span class="nav-count">3</span></a>
+      </nav>
+
+      <div class="side-label account-label">ACCOUNT</div>
+      <nav class="side-nav" aria-label="Account navigation">
+        <a href="signup.html"><span class="nav-icon">◉</span> My Profile</a>
+        <a href="login.html"><span class="nav-icon">↪</span> Log Out</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-icon">?</div>
+        <div><strong>Need a hand?</strong><p>Ask the library team for help.</p><a href="#">Contact support ↗</a></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb">Member space <span>/</span> <strong>My Borrowed Books</strong></div>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Notifications">♧<span class="notification-dot"></span></button>
+          <div class="user-chip"><div class="avatar">AH</div><div><strong>Ahmed Hassan</strong><small>Reader account</small></div><span class="chevron">⌄</span></div>
+        </div>
+      </header>
+
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL SHELF</p>
+          <h1>My Borrowed Books<span>.</span></h1>
+          <p class="subtitle">Keep track of the stories you’ve checked out and return a book when you’re done.</p>
+        </div>
+        <a class="primary-button" href="catalogue.html"><span>＋</span> Browse more books</a>
+      </section>
+
+      <section class="stats-grid" aria-label="Borrowing summary">
+        <article class="stat-card">
+          <div class="stat-icon orange">▣</div>
+          <div><p>Currently borrowed</p><strong id="borrowed-count">3 <small>books</small></strong></div>
+          <span class="stat-note">On your shelf</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon teal">◷</div>
+          <div><p>Due soon</p><strong>1 <small>book</small></strong></div>
+          <span class="stat-note due-note">Coming up</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon red">✓</div>
+          <div><p>Returned this month</p><strong>2 <small>books</small></strong></div>
+          <span class="stat-note">Nice progress</span>
+        </article>
+      </section>
+
+      <section class="shelf-heading">
+        <div><h2>Your current loans</h2><p>These books are currently checked out to you.</p></div>
+        <div class="view-toggle" aria-label="View style"><button class="selected" aria-label="Grid view">▦</button><button aria-label="List view">☰</button></div>
+      </section>
+
+      <div class="book-grid" id="book-grid">
+        <article class="book-card" data-book="alchemist">
+          <div class="book-visual cover-orange">
+            <span class="cover-kicker">A NOVEL</span>
+            <div class="cover-title">THE<br>ALCHEMIST</div>
+            <div class="cover-author">PAULO COELHO</div>
+            <div class="cover-orbit"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline"><span class="category">FICTION</span><span class="status status-available">Borrowed</span></div>
+            <h3>The Alchemist</h3><p class="author">Paulo Coelho</p>
+            <div class="loan-details"><span>Borrowed <strong>Oct 18, 2026</strong></span><span>Due date <strong>Nov 08, 2026</strong></span></div>
+            <div class="due-row"><span class="due-indicator"></span> Due in 6 days</div>
+            <button class="return-button" data-return>Return book <span>↗</span></button>
+          </div>
+        </article>
+
+        <article class="book-card" data-book="atomic">
+          <div class="book-visual cover-teal">
+            <span class="cover-kicker">TINY CHANGES</span>
+            <div class="cover-title">ATOMIC<br>HABITS</div>
+            <div class="cover-author">JAMES CLEAR</div>
+            <div class="cover-lines"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline"><span class="category">SELF DEVELOPMENT</span><span class="status status-available">Borrowed</span></div>
+            <h3>Atomic Habits</h3><p class="author">James Clear</p>
+            <div class="loan-details"><span>Borrowed <strong>Oct 12, 2026</strong></span><span>Due date <strong>Nov 12, 2026</strong></span></div>
+            <div class="due-row safe"><span class="due-indicator"></span> 10 days remaining</div>
+            <button class="return-button" data-return>Return book <span>↗</span></button>
+          </div>
+        </article>
+
+        <article class="book-card" data-book="1984">
+          <div class="book-visual cover-dark">
+            <span class="cover-kicker">A CLASSIC NOVEL</span>
+            <div class="cover-title">NINETEEN<br>EIGHTY-FOUR</div>
+            <div class="cover-author">GEORGE ORWELL</div>
+            <div class="cover-eye">◉</div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline"><span class="category">CLASSICS</span><span class="status status-available">Borrowed</span></div>
+            <h3>1984</h3><p class="author">George Orwell</p>
+            <div class="loan-details"><span>Borrowed <strong>Oct 20, 2026</strong></span><span>Due date <strong>Nov 15, 2026</strong></span></div>
+            <div class="due-row safe"><span class="due-indicator"></span> 13 days remaining</div>
+            <button class="return-button" data-return>Return book <span>↗</span></button>
+          </div>
+        </article>
+      </div>
+
+      <section class="empty-state" id="empty-state" hidden>
+        <div class="empty-art">▤</div><h2>Your shelf is all clear</h2>
+        <p>You’ve returned all your borrowed books. Find your next read in the catalogue.</p>
+        <a class="primary-button" href="catalogue.html">Explore the catalogue</a>
+      </section>
+
+      <section class="returned-notice" id="returned-notice" aria-live="polite" hidden>
+        <span>✓</span><div><strong>Book returned</strong><p>The book has been removed from your current loans in this demo.</p></div>
+      </section>
+
+      <footer class="page-footer"><span>© 2026 The Reading Room</span><span>Made for curious minds <b>✦</b></span></footer>
+    </main>
+  </div>
+
+  <script>
+    // Phase 1 prototype: demonstrates a visible return state only.
+    // This does not save data to a database or persist after refreshing.
+    const grid = document.getElementById('book-grid');
+    const count = document.getElementById('borrowed-count');
+    const emptyState = document.getElementById('empty-state');
+    const notice = document.getElementById('returned-notice');
+
+    grid.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-return]');
+      if (!button) return;
+      const card = button.closest('.book-card');
+      card.classList.add('returned');
+      card.querySelector('.status').textContent = 'Returned';
+      card.querySelector('.status').classList.remove('status-available');
+      card.querySelector('.status').classList.add('status-returned');
+      button.textContent = 'Returned ✓';
+      button.disabled = true;
+      button.classList.add('is-returned');
+      const remaining = grid.querySelectorAll('.book-card:not(.returned)').length;
+      count.innerHTML = `${remaining} <small>books</small>`;
+      notice.hidden = false;
+      if (remaining === 0) emptyState.hidden = false;
+    });
+  </script>
+</body>
+</html>
