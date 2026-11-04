@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Reading Room | Online Library</title>
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <!-- Public Top Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a class="public-brand" href="home.html" aria-label="The Reading Room home">
+        <span class="brand-mark">R</span>
+        <div class="brand-text">The Reading<br><strong>Room</strong></div>
+      </a>
+
+      <nav class="public-nav" aria-label="Main navigation">
+        <a class="active" href="home.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="my-books.html">My Books</a>
+        <a href="admin-dashboard.html">Admin Space</a>
+        <a href="studentsdata.html">Project Cover</a>
+      </nav>
+
+      <div class="public-nav-actions">
+        <a class="btn btn-secondary btn-sm" href="loginPage.html">Log In</a>
+        <a class="btn btn-primary btn-sm" href="signup.html">Join Library</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-container">
+        <div class="hero-copy">
+          <span class="eyebrow orange">IS231 WEB TECHNOLOGY · PHASE 1 PROTOTYPE</span>
+          <h1>Where curious minds gather to read and explore<span>.</span></h1>
+          <p>
+            Welcome to <strong>The Reading Room</strong>. Search through our rich catalog of literature, science, and classics. Borrow titles with one click, track your due dates, and manage your personal loans with ease.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="catalogue.html"><span>▤</span> Explore Catalogue</a>
+            <a class="btn btn-outline-white" href="my-books.html"><span>▣</span> My Borrowed Books</a>
+            <a class="btn btn-secondary" href="admin-dashboard.html"><span>⚙</span> Admin Dashboard</a>
+          </div>
+
+          <div class="hero-pill-row">
+            <span><b>✓</b> Semantic HTML5</span>
+            <span><b>✓</b> External CSS (No Frameworks)</span>
+            <span><b>✓</b> Multi-Role Workflows</span>
+          </div>
+        </div>
+
+        <div class="hero-book-showcase" aria-hidden="true">
+          <div class="hero-book-mini cover-orange">
+            <span class="cover-kicker">FICTION</span>
+            <div class="mini-title">THE<br>ALCHEMIST</div>
+            <div class="mini-author">PAULO COELHO</div>
+          </div>
+          <div class="hero-book-mini cover-teal">
+            <span class="cover-kicker">HABITS</span>
+            <div class="mini-title">ATOMIC<br>HABITS</div>
+            <div class="mini-author">JAMES CLEAR</div>
+          </div>
+          <div class="hero-book-mini cover-dark">
+            <span class="cover-kicker">CLASSIC</span>
+            <div class="mini-title">1984</div>
+            <div class="mini-author">GEORGE ORWELL</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Roles Banner -->
+    <section class="features-section">
+      <div class="shelf-heading">
+        <div>
+          <span class="eyebrow">WORKFLOWS & ROLES</span>
+          <h2>Explore by User Persona</h2>
+          <p>Experience the prototype from different perspectives as specified in the assignment.</p>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feat-icon">👤</div>
+          <h3>Guest Visitor</h3>
+          <p>Browse books anonymously, preview titles and synopsis in the catalogue, and sign up for a reader account.</p>
+          <a class="btn btn-secondary btn-sm" href="catalogue.html" style="margin-top:10px;">Browse as Guest ➔</a>
+        </div>
+
+        <div class="feature-box">
+          <div class="feat-icon">📖</div>
+          <h3>Registered Reader</h3>
+          <p>Search books by title, author, or category. Borrow available copies and manage loans on the personal shelf.</p>
+          <a class="btn btn-secondary btn-sm" href="my-books.html" style="margin-top:10px;">View Member Shelf ➔</a>
+        </div>
+
+        <div class="feature-box">
+          <div class="feat-icon">⚙</div>
+          <h3>Library Administrator</h3>
+          <p>Monitor collection stats, inspect availability, add new books, edit existing records, and remove titles.</p>
+          <a class="btn btn-secondary btn-sm" href="admin-dashboard.html" style="margin-top:10px;">Open Admin Panel ➔</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Library Collection Highlights -->
+    <section class="features-section">
+      <div class="shelf-heading">
+        <div>
+          <span class="eyebrow">FEATURED BOOKS</span>
+          <h2>Popular in The Reading Room</h2>
+          <p>Hand-picked titles from our diverse collection ready to borrow today.</p>
+        </div>
+        <a class="btn btn-secondary btn-sm" href="catalogue.html">View All Books (6) ➔</a>
+      </div>
+
+      <div class="book-grid">
+        <!-- Book 1 -->
+        <article class="book-card">
+          <div class="book-visual cover-orange">
+            <span class="cover-kicker">A NOVEL</span>
+            <div class="cover-title">THE<br>ALCHEMIST</div>
+            <div class="cover-author">PAULO COELHO</div>
+            <div class="cover-orbit"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">FICTION</span>
+              <span class="status status-available">Available</span>
+            </div>
+            <h3>The Alchemist</h3>
+            <p class="author">Paulo Coelho</p>
+            <div class="book-id-badge">ID: BK-001</div>
+            <p class="book-snippet">A magical story about following your dreams and listening to your heart across the Andalusian pastures.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-001">Details</a>
+              <a class="borrow-action-btn" href="book-details.html?id=BK-001">Borrow Book</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 2 -->
+        <article class="book-card">
+          <div class="book-visual cover-teal">
+            <span class="cover-kicker">TINY CHANGES</span>
+            <div class="cover-title">ATOMIC<br>HABITS</div>
+            <div class="cover-author">JAMES CLEAR</div>
+            <div class="cover-lines"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">SELF DEVELOPMENT</span>
+              <span class="status status-borrowed">Borrowed</span>
+            </div>
+            <h3>Atomic Habits</h3>
+            <p class="author">James Clear</p>
+            <div class="book-id-badge">ID: BK-002</div>
+            <p class="book-snippet">An easy and proven way to build good habits, break bad ones, and achieve remarkable results over time.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-002">Details</a>
+              <button class="borrow-action-btn disabled" disabled title="Currently checked out">Borrowed</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 3 -->
+        <article class="book-card">
+          <div class="book-visual cover-dark">
+            <span class="cover-kicker">A CLASSIC NOVEL</span>
+            <div class="cover-title">NINETEEN<br>EIGHTY-FOUR</div>
+            <div class="cover-author">GEORGE ORWELL</div>
+            <div class="cover-eye">◉</div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">CLASSICS</span>
+              <span class="status status-available">Available</span>
+            </div>
+            <h3>1984</h3>
+            <p class="author">George Orwell</p>
+            <div class="book-id-badge">ID: BK-003</div>
+            <p class="book-snippet">A startling dystopian masterpiece depicting totalitarian surveillance and the struggle for individual truth.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-003">Details</a>
+              <a class="borrow-action-btn" href="book-details.html?id=BK-003">Borrow Book</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="features-section" style="margin-bottom: 70px;">
+      <div class="shelf-heading">
+        <div>
+          <span class="eyebrow">SEAMLESS BORROWING</span>
+          <h2>How The Reading Room Works</h2>
+          <p>Four simple steps to start reading today.</p>
+        </div>
+      </div>
+
+      <div class="workflow-steps">
+        <div class="step-card">
+          <span class="step-number">01</span>
+          <h3>Browse Catalogue</h3>
+          <p>Filter by title, author, or category to find exactly what catches your attention.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">02</span>
+          <h3>Check Availability</h3>
+          <p>See immediately whether a title is currently available or borrowed by another reader.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">03</span>
+          <h3>Borrow & Read</h3>
+          <p>Add available books to your personal shelf with clear due date tracking.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">04</span>
+          <h3>Return On Time</h3>
+          <p>Return your borrowed books when you finish to free them up for other members.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <strong>The Reading Room</strong> · Faculty of Computing & Artificial Intelligence, Cairo University (IS231 Web Technology)
+      </div>
+      <div>
+        <a href="home.html">Home</a> ·
+        <a href="catalogue.html">Catalogue</a> ·
+        <a href="my-books.html">My Books</a> ·
+        <a href="admin-dashboard.html">Admin</a> ·
+        <a href="studentsdata.html">Project Cover Page</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

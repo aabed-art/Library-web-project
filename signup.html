@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Library | The Reading Room</title>
+  <link rel="stylesheet" href="css/signup.css" />
+</head>
+<body>
+  <!-- Public Top Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a class="public-brand" href="home.html" aria-label="The Reading Room home">
+        <span class="brand-mark">R</span>
+        <div class="brand-text">The Reading<br><strong>Room</strong></div>
+      </a>
+
+      <nav class="public-nav" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="my-books.html">My Books</a>
+        <a href="admin-dashboard.html">Admin Space</a>
+        <a href="studentsdata.html">Project Cover</a>
+      </nav>
+
+      <div class="public-nav-actions">
+        <a class="btn btn-outline-white btn-sm" href="home.html">← Back to Home</a>
+        <a class="btn btn-primary btn-sm" href="loginPage.html">Log In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="split-auth-shell">
+    <!-- Left Promotional Banner -->
+    <section class="split-auth-banner">
+      <div>
+        <a class="public-brand" href="home.html" style="margin-bottom: 24px;">
+          <span class="brand-mark">R</span>
+          <div class="brand-text">The Reading<br><strong>Room</strong></div>
+        </a>
+
+        <span class="eyebrow orange">BECOME A MEMBER</span>
+        <h1 style="color: white; font-size: 32px; margin: 12px 0 16px;">
+          Your next chapter starts <span>here.</span>
+        </h1>
+        <p style="color: #b3c5c5; font-size: 13px; line-height: 1.7; max-width: 380px;">
+          Join a growing community of book enthusiasts, thinkers, and explorers. Enjoy instant access to borrowable copies.
+        </p>
+
+        <div class="signup-perks">
+          <div class="perk-item">
+            <span class="perk-check">✓</span>
+            <span>Browse a curated catalogue of fiction, classics, & science</span>
+          </div>
+          <div class="perk-item">
+            <span class="perk-check">✓</span>
+            <span>Borrow available titles with one click and track due dates</span>
+          </div>
+          <div class="perk-item">
+            <span class="perk-check">✓</span>
+            <span>Manage returns effortlessly from your personal shelf</span>
+          </div>
+          <div class="perk-item">
+            <span class="perk-check">✓</span>
+            <span>Support for Administrator and Reader account workflows</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px; padding: 18px; border-left: 3px solid var(--burnt-orange); background: rgba(255,255,255,0.04); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        <p style="font-style: italic; color: #dbe4e4; font-size: 12px; margin-bottom: 6px;">
+          “A reader lives a thousand lives before he dies . . . The man who never reads lives only one.”
+        </p>
+        <small style="color: #92a7a6; font-weight: 700;">— George R.R. Martin</small>
+      </div>
+    </section>
+
+    <!-- Right Signup Form Panel -->
+    <section class="split-auth-content">
+      <div class="form-heading">
+        <span class="eyebrow">STEP 01 · REGISTRATION</span>
+        <h2>Create Your Account</h2>
+        <p class="subtitle">Please fill in your details to create your library profile.</p>
+      </div>
+
+      <form id="signupForm" onsubmit="event.preventDefault(); handleSignup();">
+        <div class="form-grid">
+          <!-- Full Name -->
+          <div class="field full-width">
+            <label for="fullname">Full Name <span class="required-star">*</span></label>
+            <input
+              id="fullname"
+              name="fullname"
+              type="text"
+              placeholder="e.g. Ahmed Hassan"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="field full-width">
+            <label for="email">Email Address <span class="required-star">*</span></label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="name@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="field">
+            <label for="password">Password <span class="required-star">*</span></label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Min. 8 characters"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field">
+            <label for="confirm-password">Confirm Password <span class="required-star">*</span></label>
+            <input
+              id="confirm-password"
+              name="confirm-password"
+              type="password"
+              placeholder="Re-enter password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+          </div>
+
+          <!-- Role Selector per Course Requirements -->
+          <div class="field full-width">
+            <label>Select Account Role <span class="required-star">*</span></label>
+            <div class="role-selector-group">
+              <label class="role-option selected" id="opt-user">
+                <input type="radio" name="role" value="user" checked onchange="updateRoleSelect('user')" />
+                <strong>Regular Member</strong>
+                <small>Search catalogue, borrow books, manage personal loans shelf.</small>
+              </label>
+
+              <label class="role-option" id="opt-admin">
+                <input type="radio" name="role" value="admin" onchange="updateRoleSelect('admin')" />
+                <strong>Library Administrator</strong>
+                <small>Maintain inventory, inspect availability, add/edit/delete books.</small>
+              </label>
+            </div>
+          </div>
+
+          <!-- Terms Checkbox -->
+          <div class="field full-width" style="margin-top: 6px;">
+            <label class="checkbox-row" for="terms">
+              <input id="terms" name="terms" type="checkbox" required />
+              <span>I agree to The Reading Room library policies and book return terms.</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-top: 22px;">
+          <button class="btn btn-primary" type="submit" style="width: 100%;">
+            Create Account & Enter ➔
+          </button>
+        </div>
+      </form>
+
+      <p style="margin-top: 20px; font-size: 12px; color: #7f9092; text-align: center;">
+        Already have an account?
+        <a href="loginPage.html" style="color: var(--burnt-orange); font-weight: 700;">Sign In here</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <strong>The Reading Room</strong> · IS231 Web Technology Phase 1 Deliverable
+      </div>
+      <div>
+        <a href="home.html">Home</a> ·
+        <a href="catalogue.html">Catalogue</a> ·
+        <a href="my-books.html">My Shelf</a> ·
+        <a href="admin-dashboard.html">Admin</a> ·
+        <a href="studentsdata.html">Project Cover</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function updateRoleSelect(role) {
+      document.getElementById('opt-user').classList.toggle('selected', role === 'user');
+      document.getElementById('opt-admin').classList.toggle('selected', role === 'admin');
+    }
+
+    function handleSignup() {
+      const pass = document.getElementById('password').value;
+      const confirmPass = document.getElementById('confirm-password').value;
+      if (pass !== confirmPass) {
+        alert('Passwords do not match. Please verify your entries.');
+        return;
+      }
+
+      const selectedRole = document.querySelector('input[name="role"]:checked').value;
+      if (selectedRole === 'admin') {
+        window.location.href = 'admin-dashboard.html';
+      } else {
+        window.location.href = 'my-books.html';
+      }
+    }
+  </script>
+</body>
+</html>

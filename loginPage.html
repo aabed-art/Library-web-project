@@ -1,123 +1,177 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1A2C30">
-  <title>دخول | مَكتَبة</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/loginPage.css">
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In | The Reading Room</title>
+  <link rel="stylesheet" href="css/loginPage.css" />
 </head>
 <body>
-  <main class="page-shell">
-    <section class="welcome-panel" aria-label="عن المكتبة">
-      <a class="brand" href="#">
-        <span class="brand-mark">م</span>
-        <span>مَكتَبة</span>
+  <!-- Public Top Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a class="public-brand" href="home.html" aria-label="The Reading Room home">
+        <span class="brand-mark">R</span>
+        <div class="brand-text">The Reading<br><strong>Room</strong></div>
       </a>
 
-      <div class="welcome-copy">
-        <p class="eyebrow">مساحة لكل حكاية</p>
-        <h1>كل كتاب،<br>يفتح لك <span>عالمًا.</span></h1>
-        <p class="welcome-description">
-          مكانك المفضل لاكتشاف الكتب وحفظ قراءاتك والعودة دائمًا إلى الصفحة التي توقفت عندها.
+      <nav class="public-nav" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="my-books.html">My Books</a>
+        <a href="admin-dashboard.html">Admin Space</a>
+        <a href="studentsdata.html">Project Cover</a>
+      </nav>
+
+      <div class="public-nav-actions">
+        <a class="btn btn-outline-white btn-sm" href="home.html">← Back to Home</a>
+        <a class="btn btn-primary btn-sm" href="signup.html">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="split-auth-shell">
+    <!-- Left Banner -->
+    <section class="split-auth-banner">
+      <div>
+        <a class="public-brand" href="home.html" style="margin-bottom: 30px;">
+          <span class="brand-mark">R</span>
+          <div class="brand-text">The Reading<br><strong>Room</strong></div>
+        </a>
+
+        <span class="eyebrow orange">IS231 WEB TECHNOLOGY · ONLINE LIBRARY</span>
+        <h1 style="color: white; font-size: 34px; margin: 12px 0 16px;">
+          Every great journey begins with a single <span>page.</span>
+        </h1>
+        <p style="color: #b3c5c5; font-size: 13px; line-height: 1.7; max-width: 380px;">
+          Sign in to check your active loans, reserve new books from the catalogue, or manage collection records if you are a library administrator.
         </p>
       </div>
 
-      <div class="book-stack" aria-hidden="true">
-        <span class="book book-one"><i></i></span>
-        <span class="book book-two"><i></i></span>
-        <span class="book book-three"><i></i></span>
-        <span class="book book-four"><i></i></span>
-        <span class="spark spark-one">✳</span>
-        <span class="spark spark-two">✦</span>
+      <div style="margin-top: 40px; padding: 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg);">
+        <p style="margin: 0 0 6px; font-weight: 700; font-size: 11px; color: var(--burnt-orange);">PHASE 1 PROTOTYPE TIP</p>
+        <p style="margin: 0; font-size: 11px; color: #d8e5e4; line-height: 1.5;">
+          Use the quick role buttons on the right to test both the <strong>Regular Reader</strong> and <strong>Administrator</strong> workflows instantly without typing.
+        </p>
       </div>
-
-      <p class="panel-note">اقرأ على مهل، واكتشف أكثر.</p>
     </section>
 
-    <section class="form-panel" aria-labelledby="login-title">
-      <div class="mobile-brand">
-        <span class="brand-mark">م</span>
-        مَكتَبة
-      </div>
-
+    <!-- Right Login Form Panel -->
+    <section class="split-auth-content">
       <div class="form-heading">
-        <p class="eyebrow">أهلًا بعودتك</p>
-        <h2 id="login-title">سجّل دخولك</h2>
-        <p>كمّل رحلتك بين صفحاتك المفضلة.</p>
+        <span class="eyebrow">MEMBER & STAFF ACCESS</span>
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Enter your credentials to enter your personal reading space.</p>
       </div>
 
-      <form id="login-form" novalidate>
-        <div class="field-group">
-          <label for="email">البريد الإلكتروني</label>
+      <form id="loginForm" onsubmit="event.preventDefault(); handleLogin();">
+        <div class="field" style="margin-bottom: 16px;">
+          <label for="email">Email Address <span class="required-star">*</span></label>
           <input
             id="email"
             name="email"
             type="email"
-            placeholder="name@example.com"
+            placeholder="reader@readingroom.edu"
             autocomplete="email"
             required
-          >
-          <small class="field-error" id="email-error"></small>
+          />
         </div>
 
-        <div class="field-group">
-          <div class="label-row">
-            <label for="password">كلمة المرور</label>
-            <a class="text-link" href="#forgot">نسيت كلمة المرور؟</a>
+        <div class="field" style="margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <label for="password">Password <span class="required-star">*</span></label>
+            <a href="#" style="font-size: 10px; color: var(--burnt-orange); font-weight: 600;">Forgot password?</a>
           </div>
-
-          <div class="password-wrap">
+          <div style="position: relative;">
             <input
               id="password"
               name="password"
               type="password"
-              placeholder="أدخل كلمة المرور"
+              placeholder="Enter your account password"
               autocomplete="current-password"
               minlength="6"
               required
-            >
+            />
             <button
-              class="password-toggle"
-              id="password-toggle"
               type="button"
-              aria-label="إظهار كلمة المرور"
-              aria-pressed="false"
+              id="togglePassword"
+              onclick="togglePassVisibility()"
+              style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #7f9193; font-weight: 600;"
             >
-              إظهار
+              Show
             </button>
           </div>
-          <small class="field-error" id="password-error"></small>
         </div>
 
-        <label class="remember-row" for="remember">
-          <input id="remember" name="remember" type="checkbox">
-          <span class="custom-check" aria-hidden="true"></span>
-          <span>تذكّرني</span>
-        </label>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;">
+          <label class="checkbox-row" for="remember">
+            <input id="remember" name="remember" type="checkbox" checked />
+            <span>Remember me on this browser</span>
+          </label>
+        </div>
 
-        <button class="submit-button" type="submit">
-          دخول إلى مكتبتي <span aria-hidden="true">←</span>
+        <button class="btn btn-primary" type="submit" style="width: 100%;">
+          Sign In to Library ➔
         </button>
 
-        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        <!-- Fast Role Selector / Demo Launcher per Course PDF -->
+        <div class="login-quick-demo">
+          <p>Prototype Quick-Select Role:</p>
+          <div class="demo-btn-group">
+            <a class="btn btn-secondary btn-sm" href="my-books.html" style="flex:1;">
+              👤 Reader Demo (Ahmed)
+            </a>
+            <a class="btn btn-secondary btn-sm" href="admin-dashboard.html" style="flex:1;">
+              ⚙ Admin Demo
+            </a>
+          </div>
+        </div>
       </form>
 
-      <p class="signup-line">
-        لسه معندكش حساب؟
-        <a class="text-link" href="#signup">أنشئ حسابًا جديدًا</a>
-      </p>
-
-      <p class="terms">
-        بالمتابعة، أنت توافق على <a href="#terms">الشروط والأحكام</a>.
+      <p style="margin-top: 24px; font-size: 12px; color: #7f9092; text-align: center;">
+        Don't have an account yet?
+        <a href="signup.html" style="color: var(--burnt-orange); font-weight: 700;">Join The Reading Room</a>
       </p>
     </section>
   </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <strong>The Reading Room</strong> · IS231 Web Technology Phase 1 Deliverable
+      </div>
+      <div>
+        <a href="home.html">Home</a> ·
+        <a href="catalogue.html">Catalogue</a> ·
+        <a href="my-books.html">My Shelf</a> ·
+        <a href="admin-dashboard.html">Admin</a> ·
+        <a href="studentsdata.html">Project Cover</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function togglePassVisibility() {
+      const pass = document.getElementById('password');
+      const btn = document.getElementById('togglePassword');
+      if (pass.type === 'password') {
+        pass.type = 'text';
+        btn.textContent = 'Hide';
+      } else {
+        pass.type = 'password';
+        btn.textContent = 'Show';
+      }
+    }
+
+    function handleLogin() {
+      const email = document.getElementById('email').value.toLowerCase();
+      if (email.includes('admin')) {
+        window.location.href = 'admin-dashboard.html';
+      } else {
+        window.location.href = 'my-books.html';
+      }
+    }
+  </script>
 </body>
 </html>

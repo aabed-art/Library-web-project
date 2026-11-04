@@ -1,125 +1,27 @@
-* {
-  box-sizing: border-box;
-}
+@import url('style.css');
 
-body {
-  margin: 0;
-  background: #faf6ef;
-  color: #1a2c30;
-  font: 1rem/1.5 Arial, sans-serif;
-}
-
-.container {
-  width: min(48rem, calc(100% - 2rem));
-  margin: 0 auto;
-}
-
-.site-header {
-  background: #1a2c30;
-  color: white;
-  border-bottom: 2px solid #fe7e3c;
-}
-
-.header-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem 1rem;
-  padding: 0.75rem 0;
-}
-
-.brand, h1, h2, h3 {
-  font-family: Georgia, serif;
-}
-
-.brand {
-  font-weight: bold;
-}
-
-nav a {
-  color: #ffd0af;
-}
-
-main {
-  padding: 1.25rem 0 2rem;
-}
-
-h1, h2, h3 {
-  line-height: 1.2;
-}
-
-h1 {
-  margin: 0 0 0.75rem;
-  font-size: 2rem;
-}
-
-h2 {
-  margin: 1.5rem 0 0.25rem;
-}
-
-.preview-note {
-  color: #61413c;
-  margin: 0 0 0.5rem;
-}
-
-.search-form {
+/* Catalogue-specific styling */
+.catalogue-search-bar {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border: 1px solid #cfc3b6;
-  background: white;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1fr auto;
+  gap: 12px;
+  align-items: flex-end;
+  background: var(--white);
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
 }
 
-.field label {
-  display: block;
-  margin-bottom: 0.25rem;
+@media (max-width: 900px) {
+  .catalogue-search-bar {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-input, select, button {
-  font: inherit;
-  padding: 0.3rem 0.5rem;
-}
-
-input, select {
-  width: 100%;
-}
-
-.form-buttons {
-  grid-column: 1 / -1;
-}
-
-.book {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #cfc3b6;
-}
-
-.book h3, .book p {
-  margin: 0 0 0.25rem;
-}
-
-.available {
-  color: #0e6873;
-}
-
-.borrowed {
-  color: #61413c;
-}
-
-summary {
-  cursor: pointer;
-}
-
-.book details p, .empty-state p {
-  margin: 0.35rem 0 0;
-}
-
-.empty-state {
-  margin-top: 1rem;
-}
-
-@media (max-width: 520px) {
-  .search-form {
+@media (max-width: 580px) {
+  .catalogue-search-bar {
     grid-template-columns: 1fr;
   }
 }

@@ -21,11 +21,22 @@
         <a class="active" href="my-books.html"><span class="nav-icon">▣</span> My Borrowed Books <span class="nav-count">3</span></a>
       </nav>
 
-      <div class="side-label account-label">ACCOUNT</div>
-      <nav class="side-nav" aria-label="Account navigation">
-        <a href="signup.html"><span class="nav-icon">◉</span> My Profile</a>
-        <a href="login.html"><span class="nav-icon">↪</span> Log Out</a>
+      <div class="side-label account-label">ADMINISTRATION</div>
+      <nav class="side-nav" aria-label="Admin navigation">
+        <a href="admin-dashboard.html"><span class="nav-icon">⚙</span> Admin Dashboard</a>
+        <a href="add-edit-book.html"><span class="nav-icon">＋</span> Add / Edit Book</a>
       </nav>
+
+      <div class="side-label account-label">ACCOUNT & INFO</div>
+      <nav class="side-nav" aria-label="Account navigation">
+        <a href="studentsdata.html"><span class="nav-icon">★</span> Project Cover Page</a>
+        <a href="loginPage.html"><span class="nav-icon">↪</span> Log Out</a>
+      </nav>
+
+      <div class="role-switch-badge">
+        <p>Active Role: <strong>Member (Reader)</strong></p>
+        <a href="admin-dashboard.html">Switch to Admin View ➔</a>
+      </div>
 
       <div class="sidebar-bottom">
         <div class="help-icon">?</div>
@@ -83,11 +94,14 @@
             <div class="cover-orbit"></div>
           </div>
           <div class="book-info">
-            <div class="book-topline"><span class="category">FICTION</span><span class="status status-available">Borrowed</span></div>
+            <div class="book-topline"><span class="category">FICTION</span><span class="status status-borrowed">Borrowed</span></div>
             <h3>The Alchemist</h3><p class="author">Paulo Coelho</p>
+            <div class="book-id-badge">ID: LIB-001</div>
             <div class="loan-details"><span>Borrowed <strong>Oct 18, 2026</strong></span><span>Due date <strong>Nov 08, 2026</strong></span></div>
             <div class="due-row"><span class="due-indicator"></span> Due in 6 days</div>
-            <button class="return-button" data-return>Return book <span>↗</span></button>
+            <div class="card-actions">
+              <button class="return-button" data-return>Return book <span>↗</span></button>
+            </div>
           </div>
         </article>
 
@@ -99,11 +113,14 @@
             <div class="cover-lines"></div>
           </div>
           <div class="book-info">
-            <div class="book-topline"><span class="category">SELF DEVELOPMENT</span><span class="status status-available">Borrowed</span></div>
+            <div class="book-topline"><span class="category">SELF DEVELOPMENT</span><span class="status status-borrowed">Borrowed</span></div>
             <h3>Atomic Habits</h3><p class="author">James Clear</p>
+            <div class="book-id-badge">ID: LIB-002</div>
             <div class="loan-details"><span>Borrowed <strong>Oct 12, 2026</strong></span><span>Due date <strong>Nov 12, 2026</strong></span></div>
             <div class="due-row safe"><span class="due-indicator"></span> 10 days remaining</div>
-            <button class="return-button" data-return>Return book <span>↗</span></button>
+            <div class="card-actions">
+              <button class="return-button" data-return>Return book <span>↗</span></button>
+            </div>
           </div>
         </article>
 
@@ -115,26 +132,33 @@
             <div class="cover-eye">◉</div>
           </div>
           <div class="book-info">
-            <div class="book-topline"><span class="category">CLASSICS</span><span class="status status-available">Borrowed</span></div>
+            <div class="book-topline"><span class="category">CLASSICS</span><span class="status status-borrowed">Borrowed</span></div>
             <h3>1984</h3><p class="author">George Orwell</p>
+            <div class="book-id-badge">ID: LIB-003</div>
             <div class="loan-details"><span>Borrowed <strong>Oct 20, 2026</strong></span><span>Due date <strong>Nov 15, 2026</strong></span></div>
             <div class="due-row safe"><span class="due-indicator"></span> 13 days remaining</div>
-            <button class="return-button" data-return>Return book <span>↗</span></button>
+            <div class="card-actions">
+              <button class="return-button" data-return>Return book <span>↗</span></button>
+            </div>
           </div>
         </article>
       </div>
 
       <section class="empty-state" id="empty-state" hidden>
-        <div class="empty-art">▤</div><h2>Your shelf is all clear</h2>
+        <div class="empty-art">▤</div>
+        <h2>Your shelf is all clear</h2>
         <p>You’ve returned all your borrowed books. Find your next read in the catalogue.</p>
         <a class="primary-button" href="catalogue.html">Explore the catalogue</a>
       </section>
 
       <section class="returned-notice" id="returned-notice" aria-live="polite" hidden>
-        <span>✓</span><div><strong>Book returned</strong><p>The book has been removed from your current loans in this demo.</p></div>
+        <span>✓</span><div><strong>Book returned</strong><p>The book has been marked as returned and removed from your active loans.</p></div>
       </section>
 
-      <footer class="page-footer"><span>© 2026 The Reading Room</span><span>Made for curious minds <b>✦</b></span></footer>
+      <footer class="page-footer">
+        <span>© 2026 The Reading Room · Online Library System</span>
+        <span>Made for curious minds <b>✦</b> · <a href="studentsdata.html">Team Project Cover</a></span>
+      </footer>
     </main>
   </div>
 
@@ -151,9 +175,10 @@
       if (!button) return;
       const card = button.closest('.book-card');
       card.classList.add('returned');
-      card.querySelector('.status').textContent = 'Returned';
-      card.querySelector('.status').classList.remove('status-available');
-      card.querySelector('.status').classList.add('status-returned');
+      const statusPill = card.querySelector('.status');
+      statusPill.textContent = 'Returned';
+      statusPill.classList.remove('status-borrowed');
+      statusPill.classList.add('status-returned');
       button.textContent = 'Returned ✓';
       button.disabled = true;
       button.classList.add('is-returned');

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Details | The Reading Room</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a class="brand" href="home.html" aria-label="The Reading Room home">
+        <span class="brand-mark">R</span>
+        <span class="brand-name">The Reading<br><strong>Room</strong></span>
+      </a>
+
+      <div class="side-label">LIBRARY</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="home.html"><span class="nav-icon">⌂</span> Home</a>
+        <a class="active" href="catalogue.html"><span class="nav-icon">▤</span> Browse Books</a>
+        <a href="my-books.html"><span class="nav-icon">▣</span> My Borrowed Books <span class="nav-count">3</span></a>
+      </nav>
+
+      <div class="side-label account-label">ADMINISTRATION</div>
+      <nav class="side-nav" aria-label="Admin navigation">
+        <a href="admin-dashboard.html"><span class="nav-icon">⚙</span> Admin Dashboard</a>
+        <a href="add-edit-book.html"><span class="nav-icon">＋</span> Add / Edit Book</a>
+      </nav>
+
+      <div class="side-label account-label">ACCOUNT & INFO</div>
+      <nav class="side-nav" aria-label="Account navigation">
+        <a href="studentsdata.html"><span class="nav-icon">★</span> Project Cover Page</a>
+        <a href="loginPage.html"><span class="nav-icon">↪</span> Log Out</a>
+      </nav>
+
+      <div class="role-switch-badge">
+        <p>Active Role: <strong>Member (Reader)</strong></p>
+        <a href="admin-dashboard.html">Switch to Admin View ➔</a>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="help-icon">?</div>
+        <div>
+          <strong>Need a hand?</strong>
+          <p>Ask the library team for help.</p>
+          <a href="#">Contact support ↗</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb">
+          <a href="home.html">Home</a> <span>/</span>
+          <a href="catalogue.html">Catalogue</a> <span>/</span>
+          <strong id="breadcrumb-title">Book Details</strong>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Notifications">♧<span class="notification-dot"></span></button>
+          <div class="user-chip">
+            <div class="avatar">AH</div>
+            <div>
+              <strong>Ahmed Hassan</strong>
+              <small>Reader account</small>
+            </div>
+            <span class="chevron">⌄</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Welcome row with Back Button -->
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">BOOK SPECIFICATIONS</p>
+          <h1 id="book-title-heading">Clean Code<span>.</span></h1>
+          <p class="subtitle">Complete catalogue record and copy loan management.</p>
+        </div>
+        <a class="btn btn-secondary" href="catalogue.html">
+          <span>←</span> Back to Catalogue
+        </a>
+      </section>
+
+      <!-- Dynamic Notice -->
+      <section class="alert-notice" id="detail-alert" hidden>
+        <span>✓</span>
+        <div>
+          <strong id="detail-alert-title">Status Updated</strong>
+          <p id="detail-alert-msg">Your shelf and the catalogue have been updated for this demonstration.</p>
+        </div>
+      </section>
+
+      <!-- Book Details Card -->
+      <div class="book-details-layout">
+        <!-- Visual Cover -->
+        <div class="detail-cover-card cover-teal" id="detail-cover-visual">
+          <span class="cover-kicker" id="cover-kicker-text">SOFTWARE CRAFTSMANSHIP</span>
+          <div class="cover-title" id="cover-title-text" style="font-size: 32px; margin-top: 35px;">
+            CLEAN<br>CODE
+          </div>
+          <div class="cover-author" id="cover-author-text">BY ROBERT C. MARTIN</div>
+          <div class="cover-orbit"></div>
+        </div>
+
+        <!-- Info & Actions -->
+        <div class="detail-info">
+          <div class="book-topline">
+            <span class="category" id="detail-category">TECHNOLOGY</span>
+            <span class="status status-available" id="detail-status">Available</span>
+          </div>
+
+          <h2 id="detail-title" style="font-size: 26px; margin: 12px 0 4px; color: var(--black-pearl);">Clean Code</h2>
+          <p class="author" id="detail-author" style="font-size: 13px; color: #728385;">A Handbook of Agile Software Craftsmanship by Robert C. Martin</p>
+          <div class="book-id-badge" style="margin-top: 6px;">System ID: <strong id="detail-book-id">BK-006</strong></div>
+
+          <!-- Metadata Grid -->
+          <div class="detail-meta-grid">
+            <div class="meta-item">
+              <span>Availability State</span>
+              <strong id="detail-meta-availability">Ready to Borrow (1 copy)</strong>
+            </div>
+            <div class="meta-item">
+              <span>Category</span>
+              <strong id="detail-meta-category">Technology & Computer Science</strong>
+            </div>
+            <div class="meta-item">
+              <span>Format</span>
+              <strong>Hardcover / Print Copy</strong>
+            </div>
+            <div class="meta-item">
+              <span>Shelf Location</span>
+              <strong>Section C · Shelf 4</strong>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <h3 style="font-size: 14px; margin-bottom: 6px; color: var(--black-pearl);">Book Synopsis</h3>
+          <p class="detail-synopsis" id="detail-description">
+            Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way. Noted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship. Martin has teamed up with his colleagues from Object Mentor to distill their best agile practice of cleaning code "on the fly" into a book that will instill within you the values of a software craftsman and make you a better programmer.
+          </p>
+
+          <!-- Action Bar Box -->
+          <div class="action-bar-box">
+            <div>
+              <strong style="font-size: 13px; display: block;">Copy Action</strong>
+              <small style="color: #7b8b8d;" id="action-hint">This book is currently available in the collection.</small>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-primary" id="borrow-btn" onclick="handleBorrow()">
+                <span>＋</span> Borrow This Book
+              </button>
+              <button class="btn btn-danger" id="return-btn" onclick="handleReturn()" style="display:none;">
+                <span>✓</span> Return Book
+              </button>
+              <a class="btn btn-secondary" href="my-books.html">
+                My Shelf ➔
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="page-footer">
+        <span>© 2026 The Reading Room · Project 2 Phase 1</span>
+        <span>Connected Prototype · <a href="studentsdata.html">Team Cover</a></span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Demo books catalogue dataset for detail page
+    const booksData = {
+      'BK-001': {
+        id: 'BK-001',
+        title: 'The Alchemist',
+        author: 'Paulo Coelho',
+        category: 'Fiction',
+        status: 'Available',
+        kicker: 'A NOVEL',
+        coverClass: 'cover-orange',
+        desc: 'A magical story about following your dreams and listening to your heart across the Andalusian pastures. Santiago learns to speak the language of the world and realizes that when you want something, all the universe conspires in helping you to achieve it.'
+      },
+      'BK-002': {
+        id: 'BK-002',
+        title: 'Atomic Habits',
+        author: 'James Clear',
+        category: 'Self Development',
+        status: 'Borrowed',
+        kicker: 'TINY CHANGES',
+        coverClass: 'cover-teal',
+        desc: 'An easy and proven way to build good habits, break bad ones, and achieve remarkable results over time. If you\'re having trouble changing your habits, the problem isn\'t you. The problem is your system.'
+      },
+      'BK-003': {
+        id: 'BK-003',
+        title: '1984',
+        author: 'George Orwell',
+        category: 'Classics',
+        status: 'Available',
+        kicker: 'A CLASSIC NOVEL',
+        coverClass: 'cover-dark',
+        desc: 'A startling dystopian masterpiece depicting totalitarian surveillance and the struggle for individual truth. Winston Smith struggles to maintain human individuality under the scrutinizing gaze of Big Brother.'
+      },
+      'BK-004': {
+        id: 'BK-004',
+        title: 'A Brief History of Time',
+        author: 'Stephen Hawking',
+        category: 'Science',
+        status: 'Available',
+        kicker: 'COSMOLOGY',
+        coverClass: 'cover-navy',
+        desc: 'A landmark volume in science writing by one of the greatest minds of our world, exploring black holes, gravity, time, and the origin of our cosmos for readers of all backgrounds.'
+      },
+      'BK-005': {
+        id: 'BK-005',
+        title: 'The Hobbit',
+        author: 'J.R.R. Tolkien',
+        category: 'Fantasy',
+        status: 'Available',
+        kicker: 'MIDDLE EARTH',
+        coverClass: 'cover-copper',
+        desc: 'Bilbo Baggins is a hobbit who enjoys a comfortable and unambitious life until the wizard Gandalf invites him on an epic journey with thirteen dwarves to reclaim the treasure of the Lonely Mountain.'
+      },
+      'BK-006': {
+        id: 'BK-006',
+        title: 'Clean Code',
+        author: 'Robert C. Martin',
+        category: 'Technology',
+        status: 'Available',
+        kicker: 'SOFTWARE CRAFT',
+        coverClass: 'cover-teal',
+        desc: 'Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Master the principles, patterns, and practices of writing clean, professional code.'
+      }
+    };
+
+    // Parse URL parameter ?id=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookId = urlParams.get('id') || 'BK-006';
+    const currentBook = booksData[bookId] || booksData['BK-006'];
+
+    // Populate Book Details
+    document.getElementById('breadcrumb-title').textContent = currentBook.title;
+    document.getElementById('book-title-heading').innerHTML = `${currentBook.title}<span>.</span>`;
+    document.getElementById('cover-kicker-text').textContent = currentBook.kicker;
+    document.getElementById('cover-title-text').innerHTML = currentBook.title.replace(' ', '<br>');
+    document.getElementById('cover-author-text').textContent = `BY ${currentBook.author.toUpperCase()}`;
+    document.getElementById('detail-cover-visual').className = `detail-cover-card ${currentBook.coverClass}`;
+
+    document.getElementById('detail-category').textContent = currentBook.category.toUpperCase();
+    document.getElementById('detail-title').textContent = currentBook.title;
+    document.getElementById('detail-author').textContent = `By ${currentBook.author}`;
+    document.getElementById('detail-book-id').textContent = currentBook.id;
+    document.getElementById('detail-meta-category').textContent = currentBook.category;
+    document.getElementById('detail-description').textContent = currentBook.desc;
+
+    let isAvailable = (currentBook.status === 'Available');
+    updateAvailabilityUI();
+
+    function updateAvailabilityUI() {
+      const statusPill = document.getElementById('detail-status');
+      const metaAvail = document.getElementById('detail-meta-availability');
+      const borrowBtn = document.getElementById('borrow-btn');
+      const returnBtn = document.getElementById('return-btn');
+      const hint = document.getElementById('action-hint');
+
+      if (isAvailable) {
+        statusPill.textContent = 'Available';
+        statusPill.className = 'status status-available';
+        metaAvail.textContent = 'Ready to Borrow (1 copy available)';
+        borrowBtn.style.display = 'inline-flex';
+        returnBtn.style.display = 'none';
+        hint.textContent = 'This title is currently on the shelf and ready to be checked out.';
+      } else {
+        statusPill.textContent = 'Borrowed';
+        statusPill.className = 'status status-borrowed';
+        metaAvail.textContent = 'Checked Out (Due in 14 days)';
+        borrowBtn.style.display = 'none';
+        returnBtn.style.display = 'inline-flex';
+        hint.textContent = 'This book is currently checked out to your account.';
+      }
+    }
+
+    function handleBorrow() {
+      isAvailable = false;
+      updateAvailabilityUI();
+      const alertBox = document.getElementById('detail-alert');
+      document.getElementById('detail-alert-title').textContent = 'Book Borrowed!';
+      document.getElementById('detail-alert-msg').textContent = `"${currentBook.title}" has been successfully added to your borrowed list.`;
+      alertBox.hidden = false;
+    }
+
+    function handleReturn() {
+      isAvailable = true;
+      updateAvailabilityUI();
+      const alertBox = document.getElementById('detail-alert');
+      document.getElementById('detail-alert-title').textContent = 'Book Returned!';
+      document.getElementById('detail-alert-msg').textContent = `"${currentBook.title}" has been returned and is now available in the catalogue.`;
+      alertBox.hidden = false;
+    }
+  </script>
+</body>
+</html>

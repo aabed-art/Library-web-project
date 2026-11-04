@@ -1,0 +1,30 @@
+@import url('style.css');
+
+/* Signup page styling */
+.signup-perks {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #dbe4e4;
+}
+
+.perk-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 127, 53, 0.2);
+  color: var(--burnt-orange);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex: 0 0 22px;
+}
+

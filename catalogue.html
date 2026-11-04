@@ -1,116 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Book Catalogue | Online Library</title>
-  <link rel="stylesheet" href="css/catalogue.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Catalogue | The Reading Room</title>
+  <link rel="stylesheet" href="css/catalogue.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-content">
-      <span class="brand">Online Library</span>
-      <nav aria-label="Library navigation">
-        <a href="catalogue.html" aria-current="page">Catalogue</a>
+  <div class="app-shell">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a class="brand" href="home.html" aria-label="The Reading Room home">
+        <span class="brand-mark">R</span>
+        <span class="brand-name">The Reading<br><strong>Room</strong></span>
+      </a>
+
+      <div class="side-label">LIBRARY</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="home.html"><span class="nav-icon">⌂</span> Home</a>
+        <a class="active" href="catalogue.html"><span class="nav-icon">▤</span> Browse Books</a>
+        <a href="my-books.html"><span class="nav-icon">▣</span> My Borrowed Books <span class="nav-count">3</span></a>
       </nav>
-    </div>
-  </header>
 
-  <main class="container">
-    <h1>Book Catalogue</h1>
-    <p class="preview-note" id="search-note">Search preview only.</p>
-    <form class="search-form" role="search" aria-label="Search the catalogue" aria-describedby="search-note">
-      <div class="field">
-        <label for="title-search">Book title</label>
-        <input type="search" id="title-search">
+      <div class="side-label account-label">ADMINISTRATION</div>
+      <nav class="side-nav" aria-label="Admin navigation">
+        <a href="admin-dashboard.html"><span class="nav-icon">⚙</span> Admin Dashboard</a>
+        <a href="add-edit-book.html"><span class="nav-icon">＋</span> Add / Edit Book</a>
+      </nav>
+
+      <div class="side-label account-label">ACCOUNT & INFO</div>
+      <nav class="side-nav" aria-label="Account navigation">
+        <a href="studentsdata.html"><span class="nav-icon">★</span> Project Cover Page</a>
+        <a href="loginPage.html"><span class="nav-icon">↪</span> Log Out</a>
+      </nav>
+
+      <div class="role-switch-badge">
+        <p>Active Role: <strong>Member (Reader)</strong></p>
+        <a href="admin-dashboard.html">Switch to Admin View ➔</a>
       </div>
-      <div class="field">
-        <label for="author-search">Author</label>
-        <input type="search" id="author-search">
+
+      <div class="sidebar-bottom">
+        <div class="help-icon">?</div>
+        <div>
+          <strong>Need assistance?</strong>
+          <p>Find librarians ready to help.</p>
+          <a href="#">Contact library desk ↗</a>
+        </div>
       </div>
-      <div class="field">
-        <label for="category-search">Category</label>
-        <select id="category-search">
-          <option value="">All categories</option>
-          <option>Classics</option>
-          <option>Fantasy</option>
-          <option>Science</option>
-        </select>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb">
+          <a href="home.html">Home</a> <span>/</span> <strong>Book Catalogue</strong>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Notifications">♧<span class="notification-dot"></span></button>
+          <div class="user-chip">
+            <div class="avatar">AH</div>
+            <div>
+              <strong>Ahmed Hassan</strong>
+              <small>Reader account</small>
+            </div>
+            <span class="chevron">⌄</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Welcome Banner -->
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">EXPLORE THE COLLECTION</p>
+          <h1>Book Catalogue<span>.</span></h1>
+          <p class="subtitle">Search, filter by author or category, check availability, and borrow in one click.</p>
+        </div>
+        <a class="btn btn-secondary" href="my-books.html">
+          <span>▣</span> View My Borrowed Books
+        </a>
+      </section>
+
+      <!-- Dynamic Feedback Alert -->
+      <section class="alert-notice" id="borrow-alert" hidden>
+        <span>✓</span>
+        <div>
+          <strong>Book borrowed successfully!</strong>
+          <p id="borrow-alert-text">The title has been added to your borrowed shelf. View it anytime in My Borrowed Books.</p>
+        </div>
+      </section>
+
+      <!-- Search & Filters Toolbar -->
+      <form class="catalogue-search-bar" id="search-filter-form" role="search" onsubmit="event.preventDefault(); applyFilters();">
+        <div class="field">
+          <label for="title-input">Search Book Title</label>
+          <input type="search" id="title-input" placeholder="e.g. Alchemist, 1984..." aria-label="Search Book Title" />
+        </div>
+
+        <div class="field">
+          <label for="author-input">Search Author</label>
+          <input type="search" id="author-input" placeholder="e.g. Orwell, Hawking..." aria-label="Search Author" />
+        </div>
+
+        <div class="field">
+          <label for="category-select">Category</label>
+          <select id="category-select" aria-label="Filter by category">
+            <option value="">All Categories</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Self Development">Self Development</option>
+            <option value="Classics">Classics</option>
+            <option value="Science">Science</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Technology">Technology</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="status-select">Availability</label>
+          <select id="status-select" aria-label="Filter by availability">
+            <option value="">All Statuses</option>
+            <option value="Available">Available</option>
+            <option value="Borrowed">Borrowed</option>
+          </select>
+        </div>
+
+        <div class="field" style="align-self: flex-end;">
+          <button type="button" class="btn btn-secondary btn-sm" id="reset-filters-btn">Clear</button>
+        </div>
+      </form>
+
+      <!-- Shelf heading -->
+      <section class="shelf-heading">
+        <div>
+          <h2>Available Titles (<span id="results-count">6</span>)</h2>
+          <p>Showing matching books from the library catalogue.</p>
+        </div>
+        <div class="view-toggle" aria-label="View style">
+          <button class="selected" aria-label="Grid view">▦</button>
+          <button aria-label="List view">☰</button>
+        </div>
+      </section>
+
+      <!-- Book Grid -->
+      <div class="book-grid" id="catalogue-grid">
+        <!-- Book 1 -->
+        <article class="book-card" data-title="The Alchemist" data-author="Paulo Coelho" data-category="Fiction" data-status="Available" data-id="BK-001">
+          <div class="book-visual cover-orange">
+            <span class="cover-kicker">A NOVEL</span>
+            <div class="cover-title">THE<br>ALCHEMIST</div>
+            <div class="cover-author">PAULO COELHO</div>
+            <div class="cover-orbit"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">FICTION</span>
+              <span class="status status-available">Available</span>
+            </div>
+            <h3>The Alchemist</h3>
+            <p class="author">Paulo Coelho</p>
+            <div class="book-id-badge">ID: BK-001</div>
+            <p class="book-snippet">A philosophical book that tells the story of Santiago, an Andalusian shepherd boy who yearns to travel in search of worldly treasure.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-001">Details</a>
+              <button class="borrow-action-btn" data-borrow-btn>Borrow Book</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 2 -->
+        <article class="book-card" data-title="Atomic Habits" data-author="James Clear" data-category="Self Development" data-status="Borrowed" data-id="BK-002">
+          <div class="book-visual cover-teal">
+            <span class="cover-kicker">TINY CHANGES</span>
+            <div class="cover-title">ATOMIC<br>HABITS</div>
+            <div class="cover-author">JAMES CLEAR</div>
+            <div class="cover-lines"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">SELF DEVELOPMENT</span>
+              <span class="status status-borrowed">Borrowed</span>
+            </div>
+            <h3>Atomic Habits</h3>
+            <p class="author">James Clear</p>
+            <div class="book-id-badge">ID: BK-002</div>
+            <p class="book-snippet">A supremely practical framework for improving every day. James Clear reveals practical strategies on habit formation and continuous progress.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-002">Details</a>
+              <button class="borrow-action-btn disabled" disabled title="Currently borrowed by another member">Borrowed</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 3 -->
+        <article class="book-card" data-title="1984" data-author="George Orwell" data-category="Classics" data-status="Available" data-id="BK-003">
+          <div class="book-visual cover-dark">
+            <span class="cover-kicker">A CLASSIC NOVEL</span>
+            <div class="cover-title">NINETEEN<br>EIGHTY-FOUR</div>
+            <div class="cover-author">GEORGE ORWELL</div>
+            <div class="cover-eye">◉</div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">CLASSICS</span>
+              <span class="status status-available">Available</span>
+            </div>
+            <h3>1984</h3>
+            <p class="author">George Orwell</p>
+            <div class="book-id-badge">ID: BK-003</div>
+            <p class="book-snippet">Winston Smith wrestles with oppression in Oceania, a world where the Party scrutinizes human action with the ever-watchful Big Brother.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-003">Details</a>
+              <button class="borrow-action-btn" data-borrow-btn>Borrow Book</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 4 -->
+        <article class="book-card" data-title="A Brief History of Time" data-author="Stephen Hawking" data-category="Science" data-status="Available" data-id="BK-004">
+          <div class="book-visual cover-navy">
+            <span class="cover-kicker">COSMOLOGY</span>
+            <div class="cover-title">BRIEF<br>HISTORY</div>
+            <div class="cover-author">STEPHEN HAWKING</div>
+            <div class="cover-orbit"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">SCIENCE</span>
+              <span class="status status-available">Available</span>
+            </div>
+            <h3>A Brief History of Time</h3>
+            <p class="author">Stephen Hawking</p>
+            <div class="book-id-badge">ID: BK-004</div>
+            <p class="book-snippet">A landmark volume in science writing by one of the greatest minds of our world, exploring black holes, gravity, and the origin of our cosmos.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-004">Details</a>
+              <button class="borrow-action-btn" data-borrow-btn>Borrow Book</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 5 -->
+        <article class="book-card" data-title="The Hobbit" data-author="J.R.R. Tolkien" data-category="Fantasy" data-status="Available" data-id="BK-005">
+          <div class="book-visual cover-copper">
+            <span class="cover-kicker">MIDDLE EARTH</span>
+            <div class="cover-title">THE<br>HOBBIT</div>
+            <div class="cover-author">J.R.R. TOLKIEN</div>
+            <div class="cover-lines"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">FANTASY</span>
+              <span class="status status-available">Available</span>
+            </div>
+            <h3>The Hobbit</h3>
+            <p class="author">J.R.R. Tolkien</p>
+            <div class="book-id-badge">ID: BK-005</div>
+            <p class="book-snippet">Bilbo Baggins is a hobbit who enjoys a comfortable and unambitious life until the wizard Gandalf invites him on an epic journey to Lonely Mountain.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-005">Details</a>
+              <button class="borrow-action-btn" data-borrow-btn>Borrow Book</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Book 6 -->
+        <article class="book-card" data-title="Clean Code" data-author="Robert C. Martin" data-category="Technology" data-status="Borrowed" data-id="BK-006">
+          <div class="book-visual cover-teal">
+            <span class="cover-kicker">SOFTWARE CRAFT</span>
+            <div class="cover-title">CLEAN<br>CODE</div>
+            <div class="cover-author">ROBERT C. MARTIN</div>
+            <div class="cover-orbit"></div>
+          </div>
+          <div class="book-info">
+            <div class="book-topline">
+              <span class="category">TECHNOLOGY</span>
+              <span class="status status-borrowed">Borrowed</span>
+            </div>
+            <h3>Clean Code</h3>
+            <p class="author">Robert C. Martin</p>
+            <div class="book-id-badge">ID: BK-006</div>
+            <p class="book-snippet">Even bad code can function. But if code isn't clean, it can bring a development organization to its knees. Master the principles of agile craftsmanship.</p>
+            <div class="card-actions">
+              <a class="details-action-btn" href="book-details.html?id=BK-006">Details</a>
+              <button class="borrow-action-btn disabled" disabled title="Currently checked out">Borrowed</button>
+            </div>
+          </div>
+        </article>
       </div>
-      <div class="form-buttons">
-        <button type="submit" disabled>Search</button>
-        <button type="reset">Clear filters</button>
-      </div>
-    </form>
 
-    <section aria-labelledby="results-heading">
-      <h2 id="results-heading">Books</h2>
+      <!-- Empty State UI -->
+      <section class="empty-state" id="no-results-state" hidden>
+        <div class="empty-art">🔍</div>
+        <h2>No books found</h2>
+        <p>No titles matched your current filters. Try searching with different keywords or clearing filters.</p>
+        <button class="btn btn-secondary" onclick="resetFilters()">Reset All Filters</button>
+      </section>
 
-      <article class="book">
-        <h3>The Hobbit</h3>
-        <p>J.R.R. Tolkien · Fantasy · <strong class="available">Available</strong></p>
-        <details>
-          <summary aria-label="Book details for The Hobbit">Book details</summary>
-          <p>A quiet hobbit leaves home with a band of dwarves to reclaim a mountain guarded by a dragon.</p>
-          <small>Book ID LIB-001</small>
-        </details>
-      </article>
+      <!-- Footer -->
+      <footer class="page-footer">
+        <span>© 2026 The Reading Room · Project 2 Phase 1</span>
+        <span>Connected Prototype · <a href="studentsdata.html">Team Cover</a></span>
+      </footer>
+    </main>
+  </div>
 
-      <article class="book">
-        <h3>Pride and Prejudice</h3>
-        <p>Jane Austen · Classics · <strong class="borrowed">Borrowed</strong></p>
-        <details>
-          <summary aria-label="Book details for Pride and Prejudice">Book details</summary>
-          <p>Elizabeth Bennet and Mr. Darcy learn how quickly first impressions can lead them astray.</p>
-          <small>Book ID LIB-002</small>
-        </details>
-      </article>
+  <script>
+    // Search & Filter functionality
+    const titleInput = document.getElementById('title-input');
+    const authorInput = document.getElementById('author-input');
+    const categorySelect = document.getElementById('category-select');
+    const statusSelect = document.getElementById('status-select');
+    const resetBtn = document.getElementById('reset-filters-btn');
+    const countEl = document.getElementById('results-count');
+    const noResultsEl = document.getElementById('no-results-state');
+    const alertBox = document.getElementById('borrow-alert');
+    const alertText = document.getElementById('borrow-alert-text');
+    const cards = document.querySelectorAll('#catalogue-grid .book-card');
 
-      <article class="book">
-        <h3>A Brief History of Time</h3>
-        <p>Stephen Hawking · Science · <strong class="available">Available</strong></p>
-        <details>
-          <summary aria-label="Book details for A Brief History of Time">Book details</summary>
-          <p>Hawking explores black holes, the beginning of the universe, and the nature of time.</p>
-          <small>Book ID LIB-003</small>
-        </details>
-      </article>
+    function applyFilters() {
+      const titleVal = titleInput.value.trim().toLowerCase();
+      const authorVal = authorInput.value.trim().toLowerCase();
+      const catVal = categorySelect.value;
+      const statusVal = statusSelect.value;
 
-      <article class="book">
-        <h3>The Secret Garden</h3>
-        <p>Frances Hodgson Burnett · Classics · <strong class="available">Available</strong></p>
-        <details>
-          <summary aria-label="Book details for The Secret Garden">Book details</summary>
-          <p>Mary discovers a locked garden and finds friendship as she brings it back to life.</p>
-          <small>Book ID LIB-004</small>
-        </details>
-      </article>
+      let visibleCount = 0;
 
-      <article class="book">
-        <h3>A Wizard of Earthsea</h3>
-        <p>Ursula K. Le Guin · Fantasy · <strong class="borrowed">Borrowed</strong></p>
-        <details>
-          <summary aria-label="Book details for A Wizard of Earthsea">Book details</summary>
-          <p>A young wizard named Ged sets out to face the shadow he accidentally released.</p>
-          <small>Book ID LIB-005</small>
-        </details>
-      </article>
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const author = card.getAttribute('data-author').toLowerCase();
+        const category = card.getAttribute('data-category');
+        const status = card.getAttribute('data-status');
 
-      <article class="book">
-        <h3>The Hidden Life of Trees</h3>
-        <p>Peter Wohlleben · Science · <strong class="available">Available</strong></p>
-        <details>
-          <summary aria-label="Book details for The Hidden Life of Trees">Book details</summary>
-          <p>A forester describes how trees share resources and respond to life around them.</p>
-          <small>Book ID LIB-006</small>
-        </details>
-      </article>
+        const matchesTitle = !titleVal || title.includes(titleVal);
+        const matchesAuthor = !authorVal || author.includes(authorVal);
+        const matchesCategory = !catVal || category === catVal;
+        const matchesStatus = !statusVal || status === statusVal;
 
-      <details class="empty-state">
-        <summary>No results example</summary>
-        <p>No books found.</p>
-      </details>
-    </section>
-  </main>
+        if (matchesTitle && matchesAuthor && matchesCategory && matchesStatus) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      countEl.textContent = visibleCount;
+      noResultsEl.hidden = (visibleCount > 0);
+    }
+
+    function resetFilters() {
+      titleInput.value = '';
+      authorInput.value = '';
+      categorySelect.value = '';
+      statusSelect.value = '';
+      applyFilters();
+    }
+
+    titleInput.addEventListener('input', applyFilters);
+    authorInput.addEventListener('input', applyFilters);
+    categorySelect.addEventListener('change', applyFilters);
+    statusSelect.addEventListener('change', applyFilters);
+    resetBtn.addEventListener('click', resetFilters);
+
+    // Interactive Borrow Action (UI Acceptance Check)
+    document.getElementById('catalogue-grid').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-borrow-btn]');
+      if (!btn || btn.disabled) return;
+
+      const card = btn.closest('.book-card');
+      const title = card.getAttribute('data-title');
+      const statusPill = card.querySelector('.status');
+
+      // Update state
+      card.setAttribute('data-status', 'Borrowed');
+      statusPill.textContent = 'Borrowed';
+      statusPill.classList.remove('status-available');
+      statusPill.classList.add('status-borrowed');
+
+      btn.textContent = 'Borrowed ✓';
+      btn.disabled = true;
+      btn.classList.add('disabled');
+
+      // Show alert
+      alertText.textContent = `"${title}" has been successfully checked out to your shelf.`;
+      alertBox.hidden = false;
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
